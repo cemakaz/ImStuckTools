@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textsolver</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #888 0%, #000 100%);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        input {
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #4A90E2;
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            text-align: center;
+            outline: none;
+            width: 80%;
+            max-width: 300px;
+            transition: 0.3s;
+        }
+        input::placeholder {
+            color: #bbb;
+        }
+        input:focus {
+            border-color: #357ABD;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            background-color: #4A90E2;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #357ABD;
+        }
+    </style>
+    <script>
+        function copyText() {
+            const textBox = document.getElementById("textBox");
+            textBox.select();
+            textBox.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(textBox.value);
+        }
+    </script>
+</head>
+<body>
+    <h1>Copy Text Tool</h1>
+    <p>Having trouble or can't copy a text? <strong>Got you covered!</strong></p>
+    <input type="text" id="textBox" placeholder="Enter text here...">
+    <button onclick="copyText()">Copy</button>
+</body>
+</html>
